@@ -3,7 +3,7 @@ lib64
 share
 lib
 include
-generations
+
 bin
 .idea
 pyvenv.cfg
