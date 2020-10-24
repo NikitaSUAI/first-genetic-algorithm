@@ -5,3 +5,5 @@ lib
 include
 generations
 bin
+.idea
+pyvenv.cfg
