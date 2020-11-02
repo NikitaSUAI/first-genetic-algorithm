@@ -5,13 +5,19 @@ import model
 
 
 def Crosses(arr):
-    if np.random.randint(10) < 5:
-        return arr
-    # поиск 2 рандомных хромосом
-    first, second = get_chromosomy(len(arr))
-    rnd_bit = np.random.randint(len(arr[0]))
-    arr[first][rnd_bit], arr[second][rnd_bit] = arr[second][rnd_bit], arr[first][rnd_bit]
-    return arr
+    res = []
+    for i in arr:
+        if np.random.randint(10) < 5:
+            continue
+        # поиск 2 рандомных хромосом
+        first, second = get_chromosomy(len(arr))
+        #замена подстрок
+        for i in range(np.random.randint(len(arr[0])), len(arr[0])):
+            arr[first][i], arr[second][i] = arr[second][i], arr[first][i]
+        res.append(arr[first])
+        res.append(arr[second])
+    res = np.array(res, dtype=np.uint8)
+    return res
 
 plus = "+"
 
@@ -20,12 +26,9 @@ def Reproductions(arr):
     dec = -model.fitnes(convert.B2D(arr))
     # опускаем в 3 четверть
     dec = dec - dec.max() - 1
-    print(f"{plus*10}\ndec : {dec}\n{plus*10}")
     # ищем вероятности от суммы, то есть если значение больше то вероятность больше
     prob = dec / np.sum(dec)
-    print(f"{plus*10}\nprob : {prob}\n{plus*10}")
     cumulata = find_cumulatu(prob)
-    print(f"{plus*10}\ncumulata : {cumulata}\n{plus*10}")
     res = []
     for _ in arr:
         rand = np.random.random()
