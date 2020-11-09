@@ -33,6 +33,9 @@ def main(pop_len:int, gens:int, func):
     genotype = np.random.uniform(low=0, high=2, size=(pop_len,15)).astype(np.uint8)
     for i in range(gens):
         print(f"generation : {i}")
+
+        genotype = operators
+
         genotype = operators.Mutations(
             operators.Crosses(
                 operators.Reproductions(
@@ -47,6 +50,6 @@ def main(pop_len:int, gens:int, func):
 
 if __name__ == "__main__":
     func = make_image
-    main(1000, 500, func)
+    main(47, 100, func)
 
 
